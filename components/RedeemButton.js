@@ -79,7 +79,12 @@ export default function RedeemButton({ ButtContract, goatContract, inputButter }
     }
 
     const redeem = async () => {
-        const inputButterToRedeemWith = inputButter * 1000000000000;
+        //const inputButterToRedeemWith = inputButter * 1000000000000;
+        
+        const inputButterToRedeemWith = ethers.utils.parseUnits(inputButter, 12);
+
+        console.log(inputButterToRedeemWith, inputButter);
+
         setRedeemLoading(true);
         try {
             const redeemTx = await ButtContract['unwoof(uint256)'](inputButterToRedeemWith);

@@ -78,7 +78,11 @@ export default function FormButton({ ButtContract, goatContract, inputGoat }) {
     }
 
     const mint = async () => {
-        const inputGoatToMintWith = inputGoat * 1000000000000000000;
+        //const inputGoatToMintWith = inputGoat * 1000000000000000000;
+
+        const inputGoatToMintWith = ethers.utils.parseUnits(inputGoat, 18);
+
+        console.log(inputGoatToMintWith, inputGoat);
 
         setMintLoading(true);
         try {

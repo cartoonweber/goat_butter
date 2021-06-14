@@ -96,14 +96,12 @@ export default function MintForm() {
     }, [library, chainId]);
 
     const getButterMintOutput = (input) => {
-        let mintOutput;
+        //let mintOutput;
         //setOutputEstimateLoading(true);
         try {
-            console.log(mintOutput);
-            mintOutput = input * 1000000;
-            // mintOutput = await ButtContract.getMintAmount(input);
-            //setButterOutput(ethers.utils.formatUnits(mintOutput, 12));
-            setButterOutput(mintOutput);
+            //mintOutput = input * 1000000;
+            //mintOutput = await ButtContract.getMintAmount(input);
+            setButterOutput(ethers.utils.formatUnits(input, 12));
         } catch (error) {
             console.error(error);
         }
@@ -115,8 +113,8 @@ export default function MintForm() {
             setButterOutput(0);
         }
         else {
-            //const inputGoat = ethers.utils.parseUnits(inputValue, 18);
-            getButterMintOutput(inputValue)
+            const inputGoat = ethers.utils.parseUnits(inputValue, 18);
+            getButterMintOutput(inputGoat);
         }
     }
 

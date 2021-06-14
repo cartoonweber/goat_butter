@@ -80,9 +80,10 @@ export default function RedeemForm() {
     }, [library, chainId]);
 
     const getGoatRedeemOutput = async (input) => {
-        const redeemOutput = input / 1000000;
-        console.log(redeemOutput);
-        setGoatOutput(redeemOutput);
+        //const redeemOutput = input / 1000000;
+        //console.log(redeemOutput);
+        //setGoatOutput(redeemOutput);
+        setGoatOutput(ethers.utils.formatUnits(input, 18));
     }
 
     const handleInputChange = (inputValue) => {
@@ -90,8 +91,8 @@ export default function RedeemForm() {
             setGoatOutput(0);
         }
         else {
-            //const inputButter = ethers.utils.parseUnits(inputValue, 12);
-            getGoatRedeemOutput(inputValue);
+            const inputButter = ethers.utils.parseUnits(inputValue, 12);
+            getGoatRedeemOutput(inputButter);
         }
     }
 
